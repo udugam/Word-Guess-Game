@@ -25,6 +25,7 @@ var tvShows_game = {
     selectShow: function() {
         randIndex = Math.floor(Math.random()*this.shows.length);
         var show = this.shows[randIndex];
+        show = show.toUpperCase();
         this.show = show.split("");
         console.log(this.show)
         this.initShowDisplay(this.show,this.guessedShow); 

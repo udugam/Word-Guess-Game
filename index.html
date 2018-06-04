@@ -11,19 +11,24 @@
 
 <body>
     <h1>The Tv Show Is: <span id="showDisplay"></span></h1>
+    <h2>Remaining Guesses: <span id="guesses"></span></h2>
 
 
    
     <script src="./assets/javascript/game.js"></script>
     <script>
         var showDisplay = document.querySelector("#showDisplay");
+        var guesses = document.querySelector("#guesses");
         tvShows_game.startGame(); //Initialized game variables including random show selection
-        showDisplay.textContent = tvShows_game.showDisplay(); 
+        showDisplay.textContent = tvShows_game.showDisplay();
+        guesses.textContent = tvShows_game.guesses; 
 
         document.onkeydown = function(event) {
             var userInput = event.key;
+            userInput = userInput.toUpperCase();
             tvShows_game.compareGuess(userInput);
             showDisplay.textContent = tvShows_game.showDisplay();
+            guesses.textContent = tvShows_game.guesses; 
         }
     </script>
 </body>
