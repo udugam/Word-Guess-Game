@@ -44,6 +44,11 @@ var tvShows_game = {
         return guessedShow.join("");
     },
 
+    guessHistoryDisplay: function() {
+        var guessHistory = this.guessHistory;
+        return guessHistory.join("");
+    },
+
     updateGuessedShow: function(guess, show, guessedShow) {
         show.forEach(function(element,index){
             element===guess? guessedShow[index]=guess : null;
