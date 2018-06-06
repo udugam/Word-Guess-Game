@@ -84,14 +84,14 @@ var tvShows_game = {
                 if(this.guessedShow.includes("_")===false) { //If no more letters remain to be guesses, user wins
                    this.wins++;
                    alert("Good Job! Try Another");
+                //    this.newGame = true;
                    this.restartGame();
-                   //this.newGame = true;
                 }
             } else {                            //else decrement the guesses variable by 1
                 this.guesses--;
                 if (this.guesses===0) { //if guesses run out, restart game
                     alert("You ran out of guesses! Try Again");
-                    //this.newGame = true;
+                    // this.newGame = true;
                     this.restartGame();
                 } 
             }
@@ -99,16 +99,17 @@ var tvShows_game = {
     },
 
     //starts game
-    startGame: function () {
+    startGame: function (document,song) {
         this.selectShow();
-        //call get user input method in a loop until guesses runs out
+        song.innerHTML = this.fetchThemeSong()
     },
 
     //restarts the game {
     restartGame: function () {
         this.guesses = 5;
         this.guessHistory = [];
-        this.startGame();
+        this.guessedShow = [];
+        this.startGame(document,song);
     }
 
 }

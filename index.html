@@ -24,7 +24,8 @@
         var wins = document.querySelector("#wins");
         var song = document.querySelector("#song");
 
-        tvShows_game.startGame(); //Initialized game variables including random show selection
+    
+        tvShows_game.startGame(document, song); //Initialized game variables including random show selection
         song.innerHTML = tvShows_game.fetchThemeSong(); //can this be passedinto the game object and modified there?
         showDisplay.textContent = tvShows_game.showDisplay();
         guesses.textContent = tvShows_game.guesses;
