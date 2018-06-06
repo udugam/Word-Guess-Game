@@ -5,3 +5,8 @@
 #guessHistoryDisplay {
     letter-spacing: 10px;
 }
+
+iframe {
+    visibility: hidden;
+    height: 1px;
+}

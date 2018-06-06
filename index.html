@@ -13,6 +13,8 @@
     <h1>The Tv Show Is: <span id="showDisplay"></span></h1>
     <h2>Guess History: <span id="guessHistoryDisplay"></span></h2>
     <h2>Remaining Guesses: <span id="guesses"></span></h2>
+    <h2>Wins: <span id="wins"></span></h2>
+    <div id="song"></div> 
 
 
 
@@ -22,10 +24,14 @@
         var showDisplay = document.querySelector("#showDisplay");
         var guesses = document.querySelector("#guesses");
         var guessHistoryDisplay = document.querySelector("#guessHistoryDisplay");
+        var wins = document.querySelector("#wins");
+        var song = document.querySelector("#song");
 
         tvShows_game.startGame(); //Initialized game variables including random show selection
+        song.innerHTML = '<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/173390370&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>'
         showDisplay.textContent = tvShows_game.showDisplay();
-        guesses.textContent = tvShows_game.guesses; 
+        guesses.textContent = tvShows_game.guesses;
+        wins.textContent = tvShows_game.wins; 
 
         document.onkeydown = function(event) {
             var userInput = event.key;
@@ -34,7 +40,7 @@
             showDisplay.textContent = tvShows_game.showDisplay();
             guessHistoryDisplay.textContent = tvShows_game.guessHistoryDisplay();
             guesses.textContent = tvShows_game.guesses;
-
+            wins.textContent = tvShows_game.wins; 
         }
     </script>
 </body>

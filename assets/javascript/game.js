@@ -2,7 +2,7 @@
 var tvShows_game = {
     //Variables
     shows: [
-        "The Fresh Price of Bel-Air", 
+        "The Fresh Prince of Bel-Air", 
         "Friends", 
         "Seinfeld", 
         "The X-Files", 
@@ -27,7 +27,6 @@ var tvShows_game = {
         var show = this.shows[randIndex];
         show = show.toUpperCase();
         this.show = show.split("");
-        console.log(this.show)
         this.initShowDisplay(this.show,this.guessedShow); 
     },
 
@@ -36,7 +35,6 @@ var tvShows_game = {
         show.forEach(function(letter,index) {
             (letter === " " || letter === "-")? guessedShow[index]=letter : guessedShow[index] = "_";            
         })
-        console.log(guessedShow)
     },
 
     showDisplay: function() {
@@ -53,7 +51,6 @@ var tvShows_game = {
         show.forEach(function(element,index){
             element===guess? guessedShow[index]=guess : null;
         })
-        console.log(this.guessedShow)
     },
 
     //checks to see if guess has been guessed before. Returns true or false.
@@ -73,11 +70,20 @@ var tvShows_game = {
             alert("That letter has been guessed before");
         } else {
             this.guessHistory.push(guess); //add the guess to the guessHistory array.
-            
+        
             if (this.show.includes(guess)) {    //If the guess matches any letters of the show, update the display
-                this.updateGuessedShow(guess, this.show, this.guessedShow)
+                this.updateGuessedShow(guess, this.show, this.guessedShow);
+                if(this.guessedShow.includes("_")===false) { //If no more letters remain to be guesses, user wins
+                   this.wins++;
+                   alert("Good Job! Try Another")
+                   this.restartGame();
+                }
             } else {                            //else decrement the guesses variable by 1
-                this.guesses--; 
+                this.guesses--;
+                if (this.guesses===0) { //if guesses run out, restart game
+                    alert("You ran out of guesses! Try Again")
+                    this.restartGame();
+                } 
             }
         }
     },
@@ -86,8 +92,15 @@ var tvShows_game = {
     startGame: function () {
         this.selectShow();
         //call get user input method in a loop until guesses runs out
+    },
+
+    //restarts the game {
+    restartGame: function () {
+        this.guesses = 5;
+        this.guessHistory = [];
+        this.startGame();
     }
-    
+
 }
 
     
