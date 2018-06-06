@@ -1,33 +1,41 @@
 // Declare 90sTvShows object
 var tvShows_game = {
     //Variables
+
     shows: [
         "The Fresh Prince of Bel-Air", 
         "Friends", 
-        "Seinfeld", 
-        "The X-Files", 
-        "Saved by the Bell",
-        "Boy Meets Wold",
-        "The Simpsons",
-        "Home Improvement",
-        "Rugrats"
-    ], 
+        "Seinfeld"
+    ],
+    themeSongs: [
+        '<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/253508993&color=%23f4f2f2&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>',
+        '<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/255846604&color=%23f4f2f2&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>',
+        '<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/231298857&color=%23f4f2f2&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>',
+    ],
     guessedShow: [], 
     guessHistory: [],
     show: [],
     wins: 0,
     guesses: 5,
     guess: "",
+    randIndex: null,
+    //newgame: false,
     
     //Functions
        
     //randomly generate an index number i based on the length of the global "shows" array
     selectShow: function() {
-        randIndex = Math.floor(Math.random()*this.shows.length);
-        var show = this.shows[randIndex];
+        this.randIndex = Math.floor(Math.random()*this.shows.length);
+        var show = this.shows[this.randIndex];
         show = show.toUpperCase();
         this.show = show.split("");
         this.initShowDisplay(this.show,this.guessedShow); 
+    },
+
+    fetchThemeSong: function() {
+        var themeSongs = this.themeSongs;
+        var randIndex = this.randIndex;
+        return themeSongs[randIndex];
     },
 
     //this function creates a new string of _ characters for each letter of the show
@@ -75,13 +83,15 @@ var tvShows_game = {
                 this.updateGuessedShow(guess, this.show, this.guessedShow);
                 if(this.guessedShow.includes("_")===false) { //If no more letters remain to be guesses, user wins
                    this.wins++;
-                   alert("Good Job! Try Another")
+                   alert("Good Job! Try Another");
                    this.restartGame();
+                   //this.newGame = true;
                 }
             } else {                            //else decrement the guesses variable by 1
                 this.guesses--;
                 if (this.guesses===0) { //if guesses run out, restart game
-                    alert("You ran out of guesses! Try Again")
+                    alert("You ran out of guesses! Try Again");
+                    //this.newGame = true;
                     this.restartGame();
                 } 
             }
