@@ -3,14 +3,18 @@ var tvShows_game = {
     //Variables
 
     shows: [
-        "The Fresh Prince of Bel-Air", 
-        "Friends", 
-        "Seinfeld"
-    ],
-    themeSongs: [
-        '<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/253508993&color=%23f4f2f2&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>',
-        '<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/255846604&color=%23f4f2f2&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>',
-        '<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/231298857&color=%23f4f2f2&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>',
+        {name: "The Fresh Prince of Bel-Air", songTag: '<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/253508993&color=%23f4f2f2&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>'},
+        {name: "Friends", songTag: '<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/255846604&color=%23f4f2f2&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>'},
+        {name: "Seinfeld", songTag: '<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/231298857&color=%23f4f2f2&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>'},
+        {name: "Saved by the Bell", songTag:'<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/276684599&color=%23f4f2f2&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>'},
+        {name: "The X-Files", songTag:'<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/256040072&color=%23f4f2f2&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>'},
+        {name: "Rugrats", songTag:'<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/190548527&color=%23f4f2f2&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>'},
+        {name: "The Simpsons", songTag:'<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/397746753&color=%23f4f2f2&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>'},
+        {name: "Full House", songTag:'<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/70927570&color=%23f4f2f2&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>'},
+        {name: "Who's the Boss", songTag:'<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/70928061&color=%23f4f2f2&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>'},
+        {name: "Cheers", songTag:'<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/70927427&color=%23f4f2f2&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>'},
+        {name: "Home Improvement", songTag:'<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/173390370&color=%23f4f2f2&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>'},
+        {name: "Family Matters", songTag: '<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/32016787&color=%23f4f2f2&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>' }
     ],
     guessedShow: [], 
     guessHistory: [],
@@ -25,14 +29,18 @@ var tvShows_game = {
     //randomly generate an index number i based on the length of the global "shows" array
     selectShow: function() {
         this.randIndex = Math.floor(Math.random()*this.shows.length);
-        var show = this.shows[this.randIndex];
+        // var show = this.shows[this.randIndex];
+        // show = show.toUpperCase();
+        // this.show = show.split("");
+        // this.initShowDisplay(this.show,this.guessedShow); 
+        var show = this.shows[this.randIndex].name;
         show = show.toUpperCase();
         this.show = show.split("");
         this.initShowDisplay(this.show,this.guessedShow); 
     },
 
     inputValid: function(input) {
-        if (input.charCodeAt()>=65 && input.charCodeAt()<=90) {
+        if (input.keyCode>=65 && input.keyCode<=90) {
             return true;
         } else {
             return false;
@@ -41,9 +49,7 @@ var tvShows_game = {
 
     //returns link to show's themesong
     fetchThemeSong: function() {
-        var themeSongs = this.themeSongs;
-        var randIndex = this.randIndex;
-        return themeSongs[randIndex];
+        return this.shows[this.randIndex].songTag;
     },
 
     //this function creates a new string of _ characters for each letter of the show
@@ -116,8 +122,7 @@ var tvShows_game = {
         this.guessHistory = [];
         this.guessedShow = [];
         this.startGame(song);
-    }
-
+    },
 }
 
     

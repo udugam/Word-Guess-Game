@@ -25,22 +25,21 @@
         var song = document.querySelector("#song");
 
     
-        tvShows_game.startGame(document, song); //Initialized game variables including random show selection
-        song.innerHTML = tvShows_game.fetchThemeSong(); //can this be passedinto the game object and modified there?
+        tvShows_game.startGame(song); //Initialized game variables including random show selection
         showDisplay.textContent = tvShows_game.showDisplay();
         guesses.textContent = tvShows_game.guesses;
         wins.textContent = tvShows_game.wins; 
 
        
         document.onkeyup = function(event) {
-            var userInput = event.key;
-            userInput = userInput.toUpperCase();
-            if (tvShows_game.inputValid(userInput)) {
-                tvShows_game.compareGuess(userInput);
-                showDisplay.textContent = tvShows_game.showDisplay();
+            if (tvShows_game.inputValid(event)) {
+                var userInput = event.key;
+                userInput = userInput.toUpperCase();
+                tvShows_game.compareGuess(userInput,showDisplay);
                 guessHistoryDisplay.textContent = tvShows_game.guessHistoryDisplay();
                 guesses.textContent = tvShows_game.guesses;
                 wins.textContent = tvShows_game.wins;
+                showDisplay.textContent = tvShows_game.showDisplay();;
             }
         }
         
