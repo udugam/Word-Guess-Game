@@ -35,11 +35,13 @@
         document.onkeyup = function(event) {
             var userInput = event.key;
             userInput = userInput.toUpperCase();
-            tvShows_game.compareGuess(userInput);
-            showDisplay.textContent = tvShows_game.showDisplay();
-            guessHistoryDisplay.textContent = tvShows_game.guessHistoryDisplay();
-            guesses.textContent = tvShows_game.guesses;
-            wins.textContent = tvShows_game.wins;
+            if (tvShows_game.inputValid(userInput)) {
+                tvShows_game.compareGuess(userInput);
+                showDisplay.textContent = tvShows_game.showDisplay();
+                guessHistoryDisplay.textContent = tvShows_game.guessHistoryDisplay();
+                guesses.textContent = tvShows_game.guesses;
+                wins.textContent = tvShows_game.wins;
+            }
         }
         
     </script>

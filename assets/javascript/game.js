@@ -19,7 +19,6 @@ var tvShows_game = {
     guesses: 5,
     guess: "",
     randIndex: null,
-    //newgame: false,
     
     //Functions
        
@@ -32,6 +31,15 @@ var tvShows_game = {
         this.initShowDisplay(this.show,this.guessedShow); 
     },
 
+    inputValid: function(input) {
+        if (input.charCodeAt()>=65 && input.charCodeAt()<=90) {
+            return true;
+        } else {
+            return false;
+        }
+    },
+
+    //returns link to show's themesong
     fetchThemeSong: function() {
         var themeSongs = this.themeSongs;
         var randIndex = this.randIndex;
@@ -84,14 +92,12 @@ var tvShows_game = {
                 if(this.guessedShow.includes("_")===false) { //If no more letters remain to be guesses, user wins
                    this.wins++;
                    alert("Good Job! Try Another");
-                //    this.newGame = true;
                    this.restartGame();
                 }
             } else {                            //else decrement the guesses variable by 1
                 this.guesses--;
                 if (this.guesses===0) { //if guesses run out, restart game
                     alert("You ran out of guesses! Try Again");
-                    // this.newGame = true;
                     this.restartGame();
                 } 
             }
@@ -99,7 +105,7 @@ var tvShows_game = {
     },
 
     //starts game
-    startGame: function (document,song) {
+    startGame: function (song) {
         this.selectShow();
         song.innerHTML = this.fetchThemeSong()
     },
@@ -109,7 +115,7 @@ var tvShows_game = {
         this.guesses = 5;
         this.guessHistory = [];
         this.guessedShow = [];
-        this.startGame(document,song);
+        this.startGame(song);
     }
 
 }
