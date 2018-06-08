@@ -10,3 +10,11 @@ iframe {
     visibility: hidden;
     height: 1px;
 }
+
+body {
+    background-image: url('../images/background.jpg');
+}
+
+.jumbotron {
+    opacity: 0.95;
+}
